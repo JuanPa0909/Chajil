@@ -1,31 +1,36 @@
 @extends('layout')
 
 @section('content')
-<div class="d-flex justify-content-center align-items-center" style="min-height: 85vh;">
-    <div class="card p-4 shadow-lg" style="background-color: rgba(13, 61, 46, 0.9); border-radius: 15px; width: 100%; max-width: 400px;">
+<div class="container d-flex justify-content-between align-items-center" style="min-height: 80vh;">
+    <!-- Sección Izquierda -->
+    <div class="left-section text-center" style="max-width: 45%;">
+        <h1 class="display-4 font-weight-bold" style="color: #004d40;">CHAJIL SIWAN</h1>
+        <p class="lead" style="color: #004d40;">Administración y Gestión del Parque Ecológico</p>
+    </div>
+
+    <!-- Sección de Login -->
+    <div class="card p-5 shadow-lg" style="background-color: rgba(13, 61, 46, 0.05); border-radius: 15px; max-width: 400px; width: 100%;">
         <div class="text-center mb-4">
-            <img src="{{ asset('imagenes/usuario.jpg') }}" class="rounded-circle" alt="User Image" style="width: 100px; height: 100px;">
+            <h2 class="font-weight-bold" style="color: #004d40;">Iniciar Sesión</h2>
         </div>
-        <h2 class="text-center text-light mb-4">Iniciar Sesión</h2>
-        <p class="text-center text-light mb-4">Accede a tu cuenta para gestionar tus reservas y actividades.</p>
         <form method="POST" action="{{ route('login.post') }}">
             @csrf
             <div class="form-group">
-                <label for="email" class="text-light">Correo Electrónico</label>
+                <label for="email" class="text-dark font-weight-bold">Correo Electrónico</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="email" class="form-control" id="email" name="email" required placeholder="Introduce tu correo electrónico">
+                    <input type="email" class="form-control" id="email" name="email" required placeholder="Introduce tu correo electrónico" style="background-color: #e9f5f0;">
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="text-light">Contraseña</label>
+                <label for="password" class="text-dark font-weight-bold">Contraseña</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <span class="input-group-text bg-light"><i class="fas fa-lock"></i></span>
                     </div>
-                    <input type="password" class="form-control" id="password" name="password" required placeholder="Introduce tu contraseña">
+                    <input type="password" class="form-control" id="password" name="password" required placeholder="Introduce tu contraseña" style="background-color: #e9f5f0;">
                 </div>
             </div>
             <button type="submit" class="btn btn-custom btn-block">Iniciar Sesión</button>
@@ -35,22 +40,20 @@
 
 <style>
     .btn-custom {
-        background-color: #388e3c;
+        background-color: #004d40;
         border: none;
         color: white;
+        font-weight: bold;
     }
     .btn-custom:hover {
-        background-color: #2e7d32;
+        background-color: #003d33;
     }
     .input-group-text {
-        background-color: #66bb6a;
-        color: white;
-    }
-    .input-group-text i {
-        font-size: 1.2em;
+        color: #004d40;
     }
     .card {
         border: none;
     }
 </style>
 @endsection
+

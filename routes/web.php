@@ -19,3 +19,6 @@ Route::post('/login', 'AuthController@login')->name('login.post');
 Route::get('/user-dashboard', function () {
     return view('user-dashboard');
 })->name('user.dashboard');
+Route::get('/restaurante', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurante.index');
+
+Route::get('/actividades', [App\Http\Controllers\ActividadesController::class, 'index'])->name('actividades.index');

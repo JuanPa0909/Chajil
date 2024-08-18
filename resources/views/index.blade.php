@@ -1,129 +1,112 @@
 @extends('layout')
 
 @section('content')
-<!-- Hero Section -->
-<div class="hero text-center text-light d-flex align-items-center justify-content-center" style="height: 500px; background: url('{{ asset('imagenes/puente.jpg') }}') no-repeat center center; background-size: cover;">
-    <div style="background-color: rgba(0, 77, 64, 0.7); padding: 20px; border-radius: 15px;">
-        <h1 class="display-4">Bienvenido a Chajil Siwan</h1>
-        <p class="lead">Parque Ecológico Comunitario - Aventura entre Bosques</p>
+<!-- Hero Section con Efecto Parallax -->
+<div class="hero text-center d-flex align-items-center justify-content-center" style="height: 500px; background: url('{{ asset('imagenes/imagen1.jpeg') }}') no-repeat center center fixed; background-size: cover;">
+    <div style="background-color: rgba(34, 73, 87, 0.75); padding: 30px; border-radius: 15px;">
+        <h1 class="display-4 text-white font-weight-bold animate__animated animate__fadeInDown">Bienvenido a Chajil Siwan</h1>
+        <p class="lead text-white animate__animated animate__fadeInUp">Parque Ecológico Comunitario - Aventura entre Bosques</p>
+        <a href="#sobre-nosotros" class="btn btn-light btn-lg mt-4 animate__animated animate__fadeInUp" style="border-radius: 25px;">Descubre Más</a>
     </div>
 </div>
 
-<!-- Main Content -->
-<div class="content mt-5" style="background-color: #e0f2f1;">
-    <div class="row text-center">
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-4" style="background-color: #004d40; color: white;">
-                <div class="card-body">
-                    <h2 class="card-title">Acerca de Nosotros</h2>
-                    <p class="card-text">Descubre más sobre nuestra misión y visión.</p>
-                    <a href="#" class="btn btn-light">Leer más</a>
+<!-- Sección Acerca de Nosotros -->
+<div id="sobre-nosotros" class="content py-5" style="background-color: #f5f7f6;">
+    <div class="container">
+        <div class="row text-center mb-4">
+            <div class="col">
+                <h2 class="font-weight-bold" style="color: #225b60;">Acerca de Nosotros</h2>
+                <p class="text-muted">Descubre nuestra misión, visión y valores.</p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4 animate__animated animate__fadeInLeft">
+                <div class="card shadow-sm mb-4 border-0" style="background-color: #225b60; color: white; border-radius: 12px;">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Nuestra Misión</h3>
+                        <p class="card-text">Preservar la biodiversidad del parque mientras ofrecemos un espacio de recreación y aprendizaje sobre la naturaleza.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-4" style="background-color: #004d40; color: white;">
-                <div class="card-body">
-                    <h2 class="card-title">Eventos</h2>
-                    <p class="card-text">Entérate de nuestros próximos eventos y actividades.</p>
-                    <a href="#" class="btn btn-light">Ver eventos</a>
+            <div class="col-md-4 animate__animated animate__fadeInUp">
+                <div class="card shadow-sm mb-4 border-0" style="background-color: #225b60; color: white; border-radius: 12px;">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Nuestra Visión</h3>
+                        <p class="card-text">Ser un referente en conservación ambiental y educación ecológica, promoviendo la sustentabilidad y el respeto por la naturaleza.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-4" style="background-color: #004d40; color: white;">
-                <div class="card-body">
-                    <h2 class="card-title">Contacto</h2>
-                    <p class="card-text">¿Tienes alguna pregunta? ¡Contáctanos!</p>
-                    <a href="#" class="btn btn-light">Contáctanos</a>
+            <div class="col-md-4 animate__animated animate__fadeInRight">
+                <div class="card shadow-sm mb-4 border-0" style="background-color: #225b60; color: white; border-radius: 12px;">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Nuestros Valores</h3>
+                        <p class="card-text">Compromiso, Respeto, Sustentabilidad y Educación para proteger nuestro entorno natural.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Galería -->
-    <div class="gallery my-5">
-        <h2 class="text-center" style="color: #004d40;">Galería</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <img src="{{ asset('imagenes/imagen1.jpg') }}" class="img-fluid rounded shadow" alt="Imagen del parque">
-            </div>
-            <div class="col-md-4 mb-4">
-                <img src="{{ asset('imagenes/imagen2.jpg') }}" class="img-fluid rounded shadow" alt="Imagen del parque">
-            </div>
-            <div class="col-md-4 mb-4">
-                <img src="{{ asset('imagenes/imagen3.jpg') }}" class="img-fluid rounded shadow" alt="Imagen del parque">
-            </div>
-        </div>
-    </div>
-
-    <!-- Misión y Visión -->
-    <div class="row my-5">
-        <div class="col-md-6">
-            <h2 style="color: #004d40;">Misión</h2>
-            <p>Nuestra misión es preservar la biodiversidad del parque mientras ofrecemos un espacio de recreación y aprendizaje sobre la naturaleza.</p>
-        </div>
-        <div class="col-md-6">
-            <h2 style="color: #004d40;">Visión</h2>
-            <p>Nuestra visión es ser un referente en conservación ambiental y educación ecológica, promoviendo la sustentabilidad y el respeto por la naturaleza.</p>
-        </div>
-    </div>
-
-    <!-- Horarios y Tarifas -->
-    <div class="row my-5">
-        <div class="col-md-12">
-            <h2 class="text-center" style="color: #004d40;">Horarios y Tarifas</h2>
-            <p class="text-center">Consulta nuestros horarios de apertura y tarifas para disfrutar de todas las actividades que ofrecemos en Chajil Siwan.</p>
-            <table class="table table-bordered table-hover mt-4">
-                <thead style="background-color: #004d40; color: white;">
-                    <tr>
-                        <th scope="col">Día</th>
-                        <th scope="col">Horario</th>
-                        <th scope="col">Tarifa</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Lunes a Viernes</td>
-                        <td>8:00 AM - 5:00 PM</td>
-                        <td>Q30.00</td>
-                    </tr>
-                    <tr>
-                        <td>Sábados y Domingos</td>
-                        <td>8:00 AM - 6:00 PM</td>
-                        <td>Q50.00</td>
-                    </tr>
-                    <tr>
-                        <td>Festivos</td>
-                        <td>8:00 AM - 6:00 PM</td>
-                        <td>Q50.00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Normas del Parque -->
-    <div class="row my-5">
-        <div class="col-md-12">
-            <h2 class="text-center" style="color: #004d40;">Normas del Parque</h2>
-            <p class="text-center">Para asegurar que todos los visitantes tengan una experiencia segura y agradable, te pedimos que sigas estas normas:</p>
-            <ul class="list-group list-group-flush mt-4">
-                <li class="list-group-item">1. No se permite la entrada de alimentos y bebidas.</li>
-                <li class="list-group-item">2. Respeta la flora y fauna del parque.</li>
-                <li class="list-group-item">3. No arrojes basura, utiliza los contenedores disponibles.</li>
-                <li class="list-group-item">4. Mantén el volumen bajo para no alterar el ambiente natural.</li>
-                <li class="list-group-item">5. Sigue las indicaciones del personal del parque.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Mapa de Ubicación -->
-    <div class="map my-5">
-        <h2 class="text-center" style="color: #004d40;">¿Dónde Estamos?</h2>
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.454514963208!2d-91.45752768518444!3d14.935589990087266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858dbf498741333d%3A0x4b64784c88df0ba9!2sWMMC%2BPR3%2C%20Totonicap%C3%A1n!5e0!3m2!1ses!2sgt!4v1692648796638!5m2!1ses!2sgt" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
     </div>
 </div>
+
+<!-- Galería Interactiva -->
+<div class="gallery my-5">
+    <div class="container">
+        <h2 class="text-center font-weight-bold mb-5" style="color: #004d40;">Galería</h2>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('imagenes/imagen1.jpeg') }}" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('imagenes/imagen2.jpeg') }}" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('imagenes/imagen3.jpeg') }}" class="d-block w-100" alt="Imagen 3">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- CTA - Reserva tu Visita -->
+<div class="cta-section text-center py-5" style="background-color: #225b60; color: white;">
+    <h2 class="font-weight-bold mb-4">¿Listo para tu Aventura?</h2>
+    <p class="lead">Reserva tu visita y prepárate para una experiencia inolvidable en Chajil Siwan.</p>
+    <a href="#" class="btn btn-light btn-lg" style="border-radius: 25px;">Reserva Ahora</a>
+</div>
+
+<!-- Mapa de Ubicación -->
+<div class="map my-5">
+    <h2 class="text-center font-weight-bold" style="color: #225b60;">¿Dónde Estamos?</h2>
+    <div class="embed-responsive embed-responsive-16by9 shadow-sm" style="border-radius: 12px;">
+        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.454514963208!2d-91.45752768518444!3d14.935589990087266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858dbf498741333d%3A0x4b64784c88df0ba9!2sWMMC%2BPR3%2C%20Totonicap%C3%A1n!5e0!3m2!1ses!2sgt!4v1692648796638!5m2!1ses!2sgt" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+</div>
+
+<!-- Animaciones y efectos adicionales -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
 @endsection
+
