@@ -5,7 +5,7 @@
     <h1 class="text-center font-weight-bold" style="color: #004d40;">Panel de Control</h1>
     <p class="text-center text-muted mb-5">Selecciona una opción para gestionar las operaciones del parque.</p>
     <div class="row justify-content-center">
-        <!-- Tarjeta de Restaurante -->
+        
         <div class="col-lg-4 mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tarjeta de Cobro de Actividades -->
+        
         <div class="col-lg-4 mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">

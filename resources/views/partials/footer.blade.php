@@ -23,7 +23,6 @@
             <div class="col-md-4 mb-3">
                 <h5 class="font-weight-bold text-uppercase">Síguenos</h5>
                 <a href="#" class="text-light mr-3"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" class="text-light mr-3"><i class="fab fa-twitter fa-lg"></i></a>
                 <a href="#" class="text-light"><i class="fab fa-instagram fa-lg"></i></a>
             </div>
         </div>

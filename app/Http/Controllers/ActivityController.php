@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ActividadesController extends Controller
+class ActivityController extends Controller
 {
     public function index()
     {
-        return view('actividades.index'); 
+        return view('admin.gestion-actividades');
     }
 }

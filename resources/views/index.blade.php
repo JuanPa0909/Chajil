@@ -4,13 +4,13 @@
 <!-- Hero Section con Efecto Parallax -->
 <div class="hero text-center d-flex align-items-center justify-content-center" style="height: 500px; background: url('{{ asset('imagenes/imagen1.jpeg') }}') no-repeat center center fixed; background-size: cover;">
     <div style="background-color: rgba(34, 73, 87, 0.75); padding: 30px; border-radius: 15px;">
-        <h1 class="display-4 text-white font-weight-bold animate__animated animate__fadeInDown">Bienvenido a Chajil Siwan</h1>
-        <p class="lead text-white animate__animated animate__fadeInUp">Parque Ecológico Comunitario - Aventura entre Bosques</p>
-        <a href="#sobre-nosotros" class="btn btn-light btn-lg mt-4 animate__animated animate__fadeInUp" style="border-radius: 25px;">Descubre Más</a>
+        <h1 class="display-4 text-white font-weight-bold">Bienvenido a Chajil Siwan</h1>
+        <p class="lead text-white">Parque Ecológico Comunitario - Aventura entre Bosques</p>
+        <a href="#sobre-nosotros" class="btn btn-light btn-lg mt-4" style="border-radius: 25px;">Descubre Más</a>
     </div>
 </div>
 
-<!-- Sección Acerca de Nosotros -->
+
 <div id="sobre-nosotros" class="content py-5" style="background-color: #f5f7f6;">
     <div class="container">
         <div class="row text-center mb-4">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <div class="col-md-4 animate__animated animate__fadeInLeft">
+            <div class="col-md-4">
                 <div class="card shadow-sm mb-4 border-0" style="background-color: #225b60; color: white; border-radius: 12px;">
                     <div class="card-body">
                         <h3 class="card-title font-weight-bold">Nuestra Misión</h3>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 animate__animated animate__fadeInUp">
+            <div class="col-md-4">
                 <div class="card shadow-sm mb-4 border-0" style="background-color: #225b60; color: white; border-radius: 12px;">
                     <div class="card-body">
                         <h3 class="card-title font-weight-bold">Nuestra Visión</h3>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 animate__animated animate__fadeInRight">
+            <div class="col-md-4">
                 <div class="card shadow-sm mb-4 border-0" style="background-color: #225b60; color: white; border-radius: 12px;">
                     <div class="card-body">
                         <h3 class="card-title font-weight-bold">Nuestros Valores</h3>
@@ -48,47 +48,42 @@
     </div>
 </div>
 
-<!-- Galería Interactiva -->
+
 <div class="gallery my-5">
     <div class="container">
         <h2 class="text-center font-weight-bold mb-5" style="color: #004d40;">Galería</h2>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="max-height: 400px;">
                 <div class="carousel-item active">
-                    <img src="{{ asset('imagenes/imagen1.jpeg') }}" class="d-block w-100" alt="Imagen 1">
+                    <img src="{{ asset('imagenes/imagen1.jpeg') }}" class="d-block w-100 rounded shadow-sm" alt="Imagen 1" style="object-fit: cover; height: 400px;">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('imagenes/imagen2.jpeg') }}" class="d-block w-100" alt="Imagen 2">
+                    <img src="{{ asset('imagenes/imagen2.jpeg') }}" class="d-block w-100 rounded shadow-sm" alt="Imagen 2" style="object-fit: cover; height: 400px;">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('imagenes/imagen3.jpeg') }}" class="d-block w-100" alt="Imagen 3">
+                    <img src="{{ asset('imagenes/imagen3.jpeg') }}" class="d-block w-100 rounded shadow-sm" alt="Imagen 3" style="object-fit: cover; height: 400px;">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
                 <span class="sr-only">Anterior</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
                 <span class="sr-only">Siguiente</span>
             </a>
         </div>
     </div>
 </div>
 
-<!-- CTA - Reserva tu Visita -->
+
 <div class="cta-section text-center py-5" style="background-color: #225b60; color: white;">
     <h2 class="font-weight-bold mb-4">¿Listo para tu Aventura?</h2>
     <p class="lead">Reserva tu visita y prepárate para una experiencia inolvidable en Chajil Siwan.</p>
-    <a href="#" class="btn btn-light btn-lg" style="border-radius: 25px;">Reserva Ahora</a>
+    <a href="{{ route('reservaciones') }}" class="btn btn-light btn-lg" style="border-radius: 25px;">Reserva Ahora</a>
 </div>
 
-<!-- Mapa de Ubicación -->
+
 <div class="map my-5">
     <h2 class="text-center font-weight-bold" style="color: #225b60;">¿Dónde Estamos?</h2>
     <div class="embed-responsive embed-responsive-16by9 shadow-sm" style="border-radius: 12px;">
@@ -96,7 +91,7 @@
     </div>
 </div>
 
-<!-- Animaciones y efectos adicionales -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -109,4 +104,3 @@
     });
 </script>
 @endsection
-

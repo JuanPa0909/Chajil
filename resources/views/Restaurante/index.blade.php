@@ -23,7 +23,7 @@
                     <i class="fas fa-concierge-bell fa-3x mb-4"></i>
                     <h5 class="card-title font-weight-bold">Gestión de Pedidos</h5>
                     <p class="card-text">Administra los pedidos realizados por los clientes.</p>
-                    <a href="#" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Pedidos</a>
+                    <a href="{{ route('menu.index') }}" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Pedidos</a>
                 </div>
             </div>
         </div>

@@ -5,13 +5,12 @@
     <h1 class="text-center font-weight-bold" style="color: #004d40;">Cobro de Actividades</h1>
     <p class="text-center text-muted mb-5">Selecciona una actividad para gestionar el cobro.</p>
     <div class="row justify-content-center">
-        <!-- Entrada al Parque -->
+        
         <div class="col-lg-3 mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
-                    <i class="fas fa-tree fa-3x mb-4"></i>
+                    <i class="fa fa-tree fa-3x mb-4"></i>
                     <h5 class="card-title font-weight-bold">Entrada al Parque</h5>
-                    <!-- Contador de Tickets -->
                     <div class="d-flex justify-content-center align-items-center mb-4">
                         <button class="btn btn-light" onclick="decrease('entrada')">-</button>
                         <input type="text" id="entrada" class="form-control text-center mx-2" style="width: 50px;" value="1" readonly>
@@ -21,13 +20,11 @@
                 </div>
             </div>
         </div>
-        <!-- Canopy -->
         <div class="col-lg-3 mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
-                    <i class="fas fa-cloud fa-3x mb-4"></i>
+                    <i class="fa fa-cloud fa-3x mb-4"></i>
                     <h5 class="card-title font-weight-bold">Canopy</h5>
-                    <!-- Contador de Tickets -->
                     <div class="d-flex justify-content-center align-items-center mb-4">
                         <button class="btn btn-light" onclick="decrease('canopy')">-</button>
                         <input type="text" id="canopy" class="form-control text-center mx-2" style="width: 50px;" value="1" readonly>
@@ -37,13 +34,11 @@
                 </div>
             </div>
         </div>
-        <!-- Ciclismo de Montaña -->
         <div class="col-lg-3 mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
-                    <i class="fas fa-bicycle fa-3x mb-4"></i>
+                    <i class="fa fa-bicycle fa-3x mb-4"></i>
                     <h5 class="card-title font-weight-bold">Ciclismo de Montaña</h5>
-                    <!-- Contador de Tickets -->
                     <div class="d-flex justify-content-center align-items-center mb-4">
                         <button class="btn btn-light" onclick="decrease('ciclismo')">-</button>
                         <input type="text" id="ciclismo" class="form-control text-center mx-2" style="width: 50px;" value="1" readonly>
@@ -53,13 +48,11 @@
                 </div>
             </div>
         </div>
-        <!-- Alquiler de Bicicletas -->
         <div class="col-lg-3 mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
-                    <i class="fas fa-biking fa-3x mb-4"></i>
+                    <i class="fa fa-biking fa-3x mb-4"></i>
                     <h5 class="card-title font-weight-bold">Alquiler de Bicicletas</h5>
-                    <!-- Contador de Tickets -->
                     <div class="d-flex justify-content-center align-items-center mb-4">
                         <button class="btn btn-light" onclick="decrease('bicicletas')">-</button>
                         <input type="text" id="bicicletas" class="form-control text-center mx-2" style="width: 50px;" value="1" readonly>
