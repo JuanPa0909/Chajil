@@ -1,14 +1,14 @@
 @extends('layout')
 
 @section('content')
-<div class="container-fluid py-5">
+<div class="container-fluid py-5" style="background-color: #ffffff;">
     <h1 class="text-center font-weight-bold" style="color: #004d40;">Panel de Control del Administrador</h1>
     <p class="text-center text-muted mb-5">Selecciona una opción para gestionar las operaciones del parque y el restaurante.</p>
     
     <!-- Primera Fila -->
-    <div class="row justify-content-center">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center g-4">
         <!-- Gestión de Restaurante -->
-        <div class="col-lg-4 mb-4">
+        <div class="col mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
                     <i class="fas fa-utensils fa-3x mb-4"></i>
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Gestión del Menú -->
-        <div class="col-lg-4 mb-4">
+        <div class="col mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
                     <i class="fas fa-list-alt fa-3x mb-4"></i>
@@ -32,7 +32,7 @@
         </div>
 
         <!-- Cobro de Actividades -->
-        <div class="col-lg-4 mb-4">
+        <div class="col mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
                     <i class="fas fa-money-bill-wave fa-3x mb-4"></i>
@@ -45,9 +45,9 @@
     </div>
 
     <!-- Segunda Fila -->
-    <div class="row justify-content-center">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center g-4">
         <!-- Gestión de Inventario -->
-        <div class="col-lg-4 mb-4">
+        <div class="col mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
                     <i class="fas fa-boxes fa-3x mb-4"></i>
@@ -58,20 +58,8 @@
             </div>
         </div>
 
-        <!-- Gestión de Personal -->
-        <div class="col-lg-4 mb-4">
-            <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
-                <div class="card-body text-center text-white">
-                    <i class="fas fa-user-tie fa-3x mb-4"></i>
-                    <h5 class="card-title font-weight-bold">Personal</h5>
-                    <p class="card-text">Gestiona al personal del parque y restaurante.</p>
-                    <a href="#" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Gestión de Personal</a>
-                </div>
-            </div>
-        </div>
-
         <!-- Gestión de Actividades -->
-        <div class="col-lg-4 mb-4">
+        <div class="col mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
                     <i class="fas fa-calendar-alt fa-3x mb-4"></i>
@@ -84,9 +72,9 @@
     </div>
 
     <!-- Tercera Fila -->
-    <div class="row justify-content-center">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center g-4">
         <!-- Reportes -->
-        <div class="col-lg-4 mb-4">
+        <div class="col mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
                     <i class="fas fa-chart-line fa-3x mb-4"></i>
@@ -97,14 +85,14 @@
             </div>
         </div>
 
-        <!-- Configuración -->
-        <div class="col-lg-4 mb-4">
+        <!-- Gestión de Usuarios -->
+        <div class="col mb-4">
             <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
                 <div class="card-body text-center text-white">
-                    <i class="fas fa-cogs fa-3x mb-4"></i>
-                    <h5 class="card-title font-weight-bold">Configuración</h5>
-                    <p class="card-text">Ajusta las configuraciones del sistema.</p>
-                    <a href="#" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Configuración</a>
+                    <i class="fas fa-users fa-3x mb-4"></i>
+                    <h5 class="card-title font-weight-bold">Gestión de Usuarios</h5>
+                    <p class="card-text">Administra los usuarios del sistema.</p>
+                    <a href="{{ route('admin.gestion-usuarios') }}" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Gestión de Usuarios</a>
                 </div>
             </div>
         </div>
@@ -113,7 +101,7 @@
 
 <style>
     body {
-        background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+        background: #ffffff;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
