@@ -2,198 +2,159 @@
 
 @section('content')
 <div class="container-fluid py-5">
-    <h1 class="text-center font-weight-bold" style="color: #004d40;">Menú del Restaurante</h1>
-    <p class="text-center text-muted mb-5">Selecciona los elementos que deseas agregar al pedido y define la cantidad.</p>
-    
-    <div class="row justify-content-center mb-4">
-        <div class="col-lg-8 text-center">
-            <button class="btn btn-outline-success mr-2" id="showBreakfast" style="border-radius: 25px;">Desayunos</button>
-            <button class="btn btn-outline-success mr-2" id="showLunch" style="border-radius: 25px;">Almuerzos</button>
-            <button class="btn btn-outline-success mr-2" id="showSnacks" style="border-radius: 25px;">Refacciones</button>
-            <button class="btn btn-outline-success" id="showDrinks" style="border-radius: 25px;">Bebidas</button>
-        </div>
-    </div>
+    <h1 class="text-center font-weight-bold" style="color: #004d40;">Gestión de Pedidos</h1>
+    <p class="text-center text-muted mb-5">Selecciona los menús y bebidas para procesar el pedido.</p>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <!-- Menú de Desayunos -->
-            <div id="breakfastSection" class="card border-0 shadow-lg mb-4 d-none" style="background: #ffffff; border-radius: 15px;">
-                <div class="card-body">
-                    <h2 class="text-center font-weight-bold mb-4" style="color: #004d40;">Desayunos</h2>
-                    <div class="row">
-                        @foreach($desayunos as $desayuno)
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="d-flex justify-content-between align-items-center mb-3">
-                                    <div>
-                                        <span class="font-weight-bold">{{ $desayuno->nombre }}</span>
-                                        <p class="mb-0 text-muted">{{ $desayuno->descripcion }}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <span class="font-weight-bold mr-3">Q{{ number_format($desayuno->precio, 2) }}</span>
-                                        <input type="number" name="cantidad[{{ $desayuno->id_menu }}]" value="0" min="0" class="form-control" style="width: 70px;">
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+    <!-- Formulario para el pedido -->
+    <form action="{{ route('pedido.store') }}" method="POST">
+        @csrf
 
-            <!-- Menú de Almuerzos -->
-            <div id="lunchSection" class="card border-0 shadow-lg mb-4 d-none" style="background: #ffffff; border-radius: 15px;">
-                <div class="card-body">
-                    <h2 class="text-center font-weight-bold mb-4" style="color: #004d40;">Almuerzos</h2>
-                    <div class="row">
-                        @foreach($almuerzos as $almuerzo)
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="d-flex justify-content-between align-items-center mb-3">
-                                    <div>
-                                        <span class="font-weight-bold">{{ $almuerzo->nombre }}</span>
-                                        <p class="mb-0 text-muted">{{ $almuerzo->descripcion }}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <span class="font-weight-bold mr-3">Q{{ number_format($almuerzo->precio, 2) }}</span>
-                                        <input type="number" name="cantidad[{{ $almuerzo->id_menu }}]" value="0" min="0" class="form-control" style="width: 70px;">
-                                    </div>
-                                </li>
-                            </ul>
+        <!-- Datos del Pedido -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg mb-4" style="border-radius: 15px;">
+                    <div class="card-body">
+                        <h4 class="font-weight-bold" style="color: #004d40;">Datos del Pedido</h4>
+                        <div class="form-group">
+                            <label for="mesa" class="font-weight-bold">Número de Mesa</label>
+                            <input type="text" id="mesa" name="mesa" class="form-control" placeholder="Ingrese el número de mesa" required>
                         </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            <!-- Menú de Refacciones -->
-            <div id="snackSection" class="card border-0 shadow-lg mb-4 d-none" style="background: #ffffff; border-radius: 15px;">
-                <div class="card-body">
-                    <h2 class="text-center font-weight-bold mb-4" style="color: #004d40;">Refacciones</h2>
-                    <div class="row">
-                        @foreach($refacciones as $refaccion)
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="d-flex justify-content-between align-items-center mb-3">
-                                    <div>
-                                        <span class="font-weight-bold">{{ $refaccion->nombre }}</span>
-                                        <p class="mb-0 text-muted">{{ $refaccion->descripcion }}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <span class="font-weight-bold mr-3">Q{{ number_format($refaccion->precio, 2) }}</span>
-                                        <input type="number" name="cantidad[{{ $refaccion->id_menu }}]" value="0" min="0" class="form-control" style="width: 70px;">
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            <!-- Menú de Bebidas -->
-            <div id="drinkSection" class="card border-0 shadow-lg mb-4 d-none" style="background: #ffffff; border-radius: 15px;">
-                <div class="card-body">
-                    <h2 class="text-center font-weight-bold mb-4" style="color: #004d40;">Bebidas</h2>
-                    <div class="row">
-                        @foreach($bebidas as $bebida)
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="d-flex justify-content-between align-items-center mb-3">
-                                    <div>
-                                        <span class="font-weight-bold">{{ $bebida->nombre }}</span>
-                                        <p class="mb-0 text-muted">{{ $bebida->descripcion }}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <span class="font-weight-bold mr-3">Q{{ number_format($bebida->precio, 2) }}</span>
-                                        <input type="number" name="cantidad[{{ $bebida->id_bebida }}]" value="0" min="0" class="form-control" style="width: 70px;">
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- Menús disponibles organizados por categorías -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow-lg mb-4" style="border-radius: 15px;">
+                    <div class="card-body">
+                        <h4 class="font-weight-bold" style="color: #004d40;">Menús Disponibles</h4>
+
+                        <!-- Desayunos -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Desayunos</label>
+                            <select class="form-control" id="desayuno" name="desayuno[]">
+                                <option selected disabled>Selecciona un desayuno</option>
+                                @foreach($desayunos as $desayuno)
+                                <option value="{{ $desayuno->id_menu }}">
+                                    {{ $desayuno->nombre }} - Q{{ $desayuno->precio }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <input type="number" name="cantidad_desayuno" class="form-control mt-2" placeholder="Cantidad" min="1">
+                        </div>
+
+                        <!-- Almuerzos -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Almuerzos</label>
+                            <select class="form-control" id="almuerzo" name="almuerzo[]">
+                                <option selected disabled>Selecciona un almuerzo</option>
+                                @foreach($almuerzos as $almuerzo)
+                                <option value="{{ $almuerzo->id_menu }}">
+                                    {{ $almuerzo->nombre }} - Q{{ $almuerzo->precio }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <input type="number" name="cantidad_almuerzo" class="form-control mt-2" placeholder="Cantidad" min="1">
+                        </div>
+
+                        <!-- Refacciones -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Refacciones</label>
+                            <select class="form-control" id="refaccion" name="refaccion[]">
+                                <option selected disabled>Selecciona una refacción</option>
+                                @foreach($refacciones as $refaccion)
+                                <option value="{{ $refaccion->id_menu }}">
+                                    {{ $refaccion->nombre }} - Q{{ $refaccion->precio }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <input type="number" name="cantidad_refaccion" class="form-control mt-2" placeholder="Cantidad" min="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bebidas disponibles organizadas por categorías -->
+            <div class="col-md-6">
+                <div class="card shadow-lg mb-4" style="border-radius: 15px;">
+                    <div class="card-body">
+                        <h4 class="font-weight-bold" style="color: #004d40;">Bebidas Disponibles</h4>
+
+                        <!-- Bebidas Calientes -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Bebidas Calientes</label>
+                            <select class="form-control" id="bebida_caliente" name="bebida_caliente[]">
+                                <option selected disabled>Selecciona una bebida caliente</option>
+                                @foreach($bebidas->where('tipo', 'caliente') as $bebida)
+                                <option value="{{ $bebida->id_bebida }}">
+                                    {{ $bebida->nombre }} - Q{{ $bebida->precio }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <input type="number" name="cantidad_bebida_caliente" class="form-control mt-2" placeholder="Cantidad" min="1">
+                        </div>
+
+                        <!-- Bebidas Frías -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Bebidas Frías</label>
+                            <select class="form-control" id="bebida_fria" name="bebida_fria[]">
+                                <option selected disabled>Selecciona una bebida fría</option>
+                                @foreach($bebidas->where('tipo', 'fria') as $bebida)
+                                <option value="{{ $bebida->id_bebida }}">
+                                    {{ $bebida->nombre }} - Q{{ $bebida->precio }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <input type="number" name="cantidad_bebida_fria" class="form-control mt-2" placeholder="Cantidad" min="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón de Procesar Pedido -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 25px;">Procesar Pedido</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <style>
     body {
-        background-color: #ffffff;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa; 
     }
 
     .card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
     }
 
     .card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-5px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
-    h1, h2 {
+    .form-group label {
         color: #004d40;
+        font-weight: bold;
     }
 
-    .list-unstyled li {
-        padding: 10px 0;
-        border-bottom: 1px solid #ddd;
+    .btn-primary {
+        background-color: #1976d2;
+        border: none;
     }
 
-    .list-unstyled li:last-child {
-        border-bottom: none;
+    .btn-primary:hover {
+        background-color: #1565c0;
     }
 
-    .list-unstyled span {
-        font-size: 1.1rem;
-    }
-
-    .form-control {
-        border-radius: 15px;
-        text-align: center;
-    }
-
-    .btn-success {
-        background-color: #004d40;
-        border-color: #004d40;
-    }
-
-    .btn-success:hover {
-        background-color: #00352d;
-        border-color: #00352d;
+    h5, h4 {
+        color: #004d40;
+        font-weight: bold;
     }
 </style>
-
-<script>
-    document.getElementById('showBreakfast').addEventListener('click', function() {
-        document.getElementById('breakfastSection').classList.remove('d-none');
-        document.getElementById('lunchSection').classList.add('d-none');
-        document.getElementById('snackSection').classList.add('d-none');
-        document.getElementById('drinkSection').classList.add('d-none');
-    });
-
-    document.getElementById('showLunch').addEventListener('click', function() {
-        document.getElementById('breakfastSection').classList.add('d-none');
-        document.getElementById('lunchSection').classList.remove('d-none');
-        document.getElementById('snackSection').classList.add('d-none');
-        document.getElementById('drinkSection').classList.add('d-none');
-    });
-
-    document.getElementById('showSnacks').addEventListener('click', function() {
-        document.getElementById('breakfastSection').classList.add('d-none');
-        document.getElementById('lunchSection').classList.add('d-none');
-        document.getElementById('snackSection').classList.remove('d-none');
-        document.getElementById('drinkSection').classList.add('d-none');
-    });
-
-    document.getElementById('showDrinks').addEventListener('click', function() {
-        document.getElementById('breakfastSection').classList.add('d-none');
-        document.getElementById('lunchSection').classList.add('d-none');
-        document.getElementById('snackSection').classList.add('d-none');
-        document.getElementById('drinkSection').classList.remove('d-none');
-    });
-</script>
 @endsection

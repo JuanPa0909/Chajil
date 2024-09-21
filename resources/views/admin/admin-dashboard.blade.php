@@ -3,9 +3,9 @@
 @section('content')
 <div class="container-fluid py-5" style="background-color: #ffffff;">
     <h1 class="text-center font-weight-bold" style="color: #004d40;">Panel de Control del Administrador</h1>
-    <p class="text-center text-muted mb-5">Selecciona una opción para gestionar las operaciones del parque y el restaurante.</p>
-    
-    <!-- Primera Fila -->
+    <p class="text-center text-muted mb-5">
+        Bienvenido, {{ Auth::user()->nombres }} {{ Auth::user()->apellidos }} 
+
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center g-4">
         <!-- Gestión de Restaurante -->
         <div class="col mb-4">

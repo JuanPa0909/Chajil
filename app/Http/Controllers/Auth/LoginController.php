@@ -35,7 +35,6 @@ class LoginController extends Controller
                 return redirect()->intended('/user-dashboard');
             }
         } else {
-            // Redirigir de vuelta al formulario con un mensaje de error
             return back()->withErrors([
                 'email' => 'Las credenciales no coinciden con nuestros registros.',
             ]);
