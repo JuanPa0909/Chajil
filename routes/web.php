@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MenuController;
@@ -13,6 +14,14 @@ use App\Http\Controllers\Admin\GestionActividadesController;
 use App\Http\Controllers\CotizacionController;
 use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\PagoActividad;
+use App\Http\Controllers\MesaController;
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\ReporteController;
+
+
+
+Auth::routes(['verify' => true]);
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,8 +45,12 @@ Route::get('/user-dashboard', function () {
     return view('user-dashboard');
 })->name('user.dashboard');
 
+
 Route::get('/restaurante', [App\Http\Controllers\RestauranteController::class, 'index'])->name('restaurante.index');
 #Route::get('/actividades', [App\Http\Controllers\ActividadesController::class, 'index'])->name('actividades.index');
+//pedidos
+Route::get('/pedido/formulario', 'PedidoController@showForm'); 
+Route::post('/pedido/store', 'PedidoController@store'); // Procesa el formulario de pedido
 
 Route::get('/acerca', function () {
     return view('acerca');
@@ -87,6 +100,19 @@ Route::post('/reservaciones/calcular-total', [CotizacionController::class, 'calc
 Route::post('/pedido/store', [PedidoController::class, 'store'])->name('pedido.store');
 
 
-//Ruta cobro actividades
+//rutas cobro actividades
 Route::get('/actividades', [ActividadesController::class, 'index'])->name('actividades.index');
 Route::post('/actividades/pagar/{id_actividad}', [ActividadesController::class, 'registrarPago'])->name('actividades.pagar');
+
+//ruta mesas
+Route::get('/mesas', [MesaController::class, 'index'])->name('mesas.index');
+
+
+Route::get('/pagos', [PagoController::class, 'index'])->name('pagos.index');
+Route::post('/pagos', [PagoController::class, 'store'])->name('pagos.store');
+
+
+
+
+Route::get('/admin/reportes', [ReporteController::class, 'index'])->name('admin.reportes');
+Route::get('/admin/reportes/pdf', [ReporteController::class, 'generarPDF'])->name('admin.reportes.pdf');

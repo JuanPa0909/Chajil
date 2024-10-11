@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-<!-- Hero Section con Efecto Parallax Mejorado -->
 <div class="hero text-center d-flex align-items-center justify-content-center" style="height: 600px; background: url('{{ asset('imagenes/puente.jpg') }}') no-repeat center center fixed; background-size: cover; position: relative;">
     <div class="overlay" style="background-color: rgba(34, 73, 87, 0.85); padding: 50px; border-radius: 15px; box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px);">
         <h1 class="display-4 text-white font-weight-bold animate__animated animate__fadeInDown">Bienvenido a Chajil Siwan</h1>
@@ -84,7 +83,7 @@
             <!-- Fauna y Flora -->
             <div class="col-md-4 mb-4">
                 <div class="d-flex align-items-center justify-content-center">
-                    <i class="fas fa-paw" style="color: #225b60; font-size: 2rem;"></i>
+                    <i class="fas fa-dove" style="color: #225b60; font-size: 2rem;"></i>
                     <span class="ml-3" style="font-size: 1.2rem; color: #225b60;">Fauna y Flora</span>
                 </div>
             </div>

@@ -10,7 +10,7 @@
         <div class="col-md-4">
             <div class="card border-0 shadow-lg h-100 animate__animated animate__zoomIn" style="background-color: #004d40; color: white; border-radius: 15px;">
                 <div class="card-body">
-                    <i class="fas fa-leaf fa-3x mb-4" style="color: #b2dfdb;"></i> <!-- Icono con buen contraste -->
+                    <i class="fas fa-leaf fa-3x mb-4" style="color: #b2dfdb;"></i> 
                     <h5 class="card-title font-weight-bold" style="color: #ffffff;">Nuestra Misión</h5>
                     <p class="card-text" style="color: #ffffff;">Ofrecer un lugar natural para recreación, aventura y servicio de alimentación de calidad a los visitantes, además de fomentar la protección y cuidado del medio ambiente y ser una alternativa para la mejora económica de la comunidad Chuamazan.</p>
                 </div>
@@ -20,7 +20,7 @@
         <div class="col-md-4">
             <div class="card border-0 shadow-lg h-100 animate__animated animate__zoomIn animate__delay-1s" style="background-color: #004d40; color: white; border-radius: 15px;">
                 <div class="card-body">
-                    <i class="fas fa-eye fa-3x mb-4" style="color: #b2dfdb;"></i> <!-- Icono con buen contraste -->
+                    <i class="fas fa-eye fa-3x mb-4" style="color: #b2dfdb;"></i> 
                     <h5 class="card-title font-weight-bold" style="color: #ffffff;">Nuestra Visión</h5>
                     <p class="card-text" style="color: #ffffff;">En el 2024 nuestro Parque es una opción única, interesante y agradable para la recreación del visitante, conservando y protegiendo los recursos naturales.</p>
                 </div>
@@ -136,7 +136,6 @@
         animation-delay: 1s;
     }
 
-    /* Scroll suave para el botón */
     html {
         scroll-behavior: smooth;
     }

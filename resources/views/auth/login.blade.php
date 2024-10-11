@@ -35,6 +35,9 @@
             </div>
             <button type="submit" class="btn btn-custom btn-block">Iniciar Sesión</button>
         </form>
+        <div class="text-center mt-3">
+            <a href="{{ route('password.request') }}" class="text-dark">¿Olvidaste tu contraseña?</a>
+        </div>
     </div>
 </div>
 

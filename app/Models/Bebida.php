@@ -9,9 +9,16 @@ class Bebida extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_bebida';
-    protected $fillable = ['nombre', 'descripcion', 'precio', 'tipo_bebida']; 
+    // Especificamos el nombre correcto de la tabla
+    protected $table = 'bebidas';  
 
+    // Declaramos la clave primaria que corresponde a la tabla "bebidas"
+    protected $primaryKey = 'id_bebida';
+
+    // Campos que pueden ser llenados en la base de datos
+    protected $fillable = ['nombre', 'descripcion', 'precio', 'tipo_bebida'];
+
+    // Funciones adicionales para verificar el tipo de bebida
     public function isCaliente() {
         return $this->tipo_bebida === 'caliente';
     }

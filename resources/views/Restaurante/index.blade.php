@@ -7,34 +7,34 @@
     <div class="row justify-content-center">
         <!-- Gestión de Mesas -->
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
-                <div class="card-body text-center text-white">
-                    <i class="fas fa-chair fa-3x mb-4"></i>
+            <div class="card border-0 shadow-lg h-100" style="background-color: #ffffff; border-radius: 15px;">
+                <div class="card-body text-center">
+                    <i class="fas fa-chair fa-3x mb-4" style="color: #004d40;"></i>
                     <h5 class="card-title font-weight-bold">Gestión de Mesas</h5>
                     <p class="card-text">Controla y organiza la disponibilidad de las mesas.</p>
-                    <a href="#" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Mesas</a>
+                    <a href="{{ route('mesas.index') }}" class="btn btn-outline-dark mt-3" style="border-radius: 25px;">Ir a Mesas</a>
                 </div>
             </div>
         </div>
         <!-- Gestión de Pedidos -->
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
-                <div class="card-body text-center text-white">
-                    <i class="fas fa-concierge-bell fa-3x mb-4"></i>
+            <div class="card border-0 shadow-lg h-100" style="background-color: #ffffff; border-radius: 15px;">
+                <div class="card-body text-center">
+                    <i class="fas fa-concierge-bell fa-3x mb-4" style="color: #004d40;"></i>
                     <h5 class="card-title font-weight-bold">Gestión de Pedidos</h5>
                     <p class="card-text">Administra los pedidos realizados por los clientes.</p>
-                    <a href="{{ route('menu.index') }}" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Pedidos</a>
+                    <a href="{{ route('menu.index') }}" class="btn btn-outline-dark mt-3" style="border-radius: 25px;">Ir a Pedidos</a>
                 </div>
             </div>
         </div>
         <!-- Gestión de Pagos -->
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card border-0 shadow-lg h-100" style="background: linear-gradient(135deg, #004d40, #00695c); border-radius: 15px;">
-                <div class="card-body text-center text-white">
-                    <i class="fas fa-cash-register fa-3x mb-4"></i>
+            <div class="card border-0 shadow-lg h-100" style="background-color: #ffffff; border-radius: 15px;">
+                <div class="card-body text-center">
+                    <i class="fas fa-cash-register fa-3x mb-4" style="color: #004d40;"></i>
                     <h5 class="card-title font-weight-bold">Gestión de Pagos</h5>
                     <p class="card-text">Procesa y gestiona los pagos realizados por los clientes.</p>
-                    <a href="#" class="btn btn-outline-light mt-3" style="border-radius: 25px;">Ir a Pagos</a>
+                    <a href="{{ route('pagos.index') }}" class="btn btn-outline-dark mt-3" style="border-radius: 25px;">Ir a Pagos</a>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
 
 <style>
     body {
-        background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+        background-color: #ffffff;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -57,16 +57,18 @@
     }
 
     .card-body i {
-        color: #b2dfdb;
+        color: #004d40; /* Icon color */
     }
 
     .card-title {
         font-size: 1.5rem;
         margin-bottom: 1rem;
+        color: #004d40;
     }
 
     .card-text {
         font-size: 1rem;
+        color: #333333;
     }
 
     h1 {
