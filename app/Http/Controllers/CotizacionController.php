@@ -3,75 +3,72 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Menu;
+use App\Models\Cotizacion;
 
 class CotizacionController extends Controller
 {
-    // Muestra la vista de cotización
+    // Mostrar el formulario de cotización para los clientes
     public function index()
     {
-        return view('reservaciones');
+        return view('reservaciones');  // Mostrar la vista de reserva
     }
 
-    // Procesa el formulario y sugiere menús según la hora seleccionada
+    // Procesar la solicitud de cotización enviada por el cliente
     public function procesarCotizacion(Request $request)
     {
         // Validar los datos del formulario
         $validated = $request->validate([
-            'tipoEvento' => 'required',
-            'fechaEvento' => 'required|date',
+            'nombreCliente' => 'required|string|max:255',
+            'emailCliente' => 'required|email',
+            'telefonoCliente' => 'required|string|max:15',
+            'tipoEvento' => 'required|string',
+            'fechaEvento' => 'required|date|after_or_equal:today',
             'horaEvento' => 'required',
             'numeroPersonas' => 'required|numeric|min:1',
-            'opcionAlquiler' => 'required',
-            'servicioComida' => 'required',
-        ]);
-
-        $horaEvento = $validated['horaEvento'];
-        $sugerencias = [];
-
-        // Sugerir menús según el rango de hora
-        if ($horaEvento >= '07:00' && $horaEvento <= '10:00') {
-            $sugerencias['desayuno'] = Menu::where('tipo_menu', 'desayuno')->take(3)->get();
-            $sugerencias['refaccion'] = Menu::where('tipo_menu', 'refaccion')->take(3)->get();
-        } elseif ($horaEvento >= '11:00' && $horaEvento <= '15:00') {
-            $sugerencias['almuerzo'] = Menu::where('tipo_menu', 'almuerzo')->take(3)->get();
-        } else {
-            $sugerencias['refaccion'] = Menu::where('tipo_menu', 'refaccion')->take(3)->get();
-        }
-
-        // Si no se ha solicitado servicio de comida, eliminar sugerencias
-        if ($validated['servicioComida'] == 'no') {
-            $sugerencias = [];
-        }
-
-        return view('reservaciones', [
-            'datos' => $validated,
-            'sugerencias' => $sugerencias,
-        ]);
-    }
-
-    // Calcula el costo total basado en el número de personas y los menús seleccionados
-    public function calcularTotal(Request $request)
-    {
-        // Validar los datos del formulario
-        $validated = $request->validate([
-            'numeroPersonas' => 'required|numeric|min:1',
-            'menusSeleccionados' => 'nullable|array',
             'opcionAlquiler' => 'required|numeric',
         ]);
 
-        // Obtener los menús seleccionados (si existen)
-        $menusSeleccionados = Menu::whereIn('id_menu', $validated['menusSeleccionados'] ?? [])->get();
-
-        // Calcular el costo de los menús por el número de personas
-        $costoTotalMenus = $menusSeleccionados->sum('precio') * $validated['numeroPersonas'];
-
-        // Calcular el costo total final (alquiler del salón + costo de menús)
-        $costoTotal = $validated['opcionAlquiler'] + $costoTotalMenus;
-
-        return view('reservaciones', [
-            'costoTotal' => $costoTotal,
-            'datos' => $validated,
+        // Guardar la cotización en la base de datos
+        Cotizacion::create([
+            'nombre_cliente' => $validated['nombreCliente'],
+            'email_cliente' => $validated['emailCliente'],
+            'telefono_cliente' => $validated['telefonoCliente'],
+            'tipo_evento' => $validated['tipoEvento'],
+            'fecha_evento' => $validated['fechaEvento'],
+            'hora_evento' => $validated['horaEvento'],
+            'numero_personas' => $validated['numeroPersonas'],
+            'opcion_alquiler' => $validated['opcionAlquiler'],
+            'estado' => 'pendiente',  // El estado por defecto es 'pendiente'
         ]);
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('reservaciones')->with('success', 'Tu solicitud de cotización ha sido enviada correctamente. Te contactaremos pronto.');
+    }
+
+    // Mostrar todas las cotizaciones en la vista de administración
+    public function verCotizaciones()
+    {
+        // Obtener todas las cotizaciones
+        $cotizaciones = Cotizacion::all();
+        return view('admin.gestion_cotizaciones', compact('cotizaciones'));
+    }
+
+    // Método para actualizar el estado de una cotización a "contactado"
+    public function actualizarEstado($id)
+    {
+        $cotizacion = Cotizacion::find($id);
+        $cotizacion->estado = 'contactado';  // Cambiar el estado a "contactado"
+        $cotizacion->save();
+
+        return redirect()->back()->with('success', 'Cotización marcada como contactada.');
+    }
+
+    // Método para eliminar una cotización
+    public function eliminarCotizacion($id)
+    {
+        $cotizacion = Cotizacion::find($id);
+        $cotizacion->delete();
+
+        return redirect()->back()->with('success', 'Cotización eliminada correctamente.');
     }
 }

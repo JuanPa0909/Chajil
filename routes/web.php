@@ -17,10 +17,20 @@ use App\Http\Controllers\PagoActividad;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\admin\GestionPagosAdminController;
+use App\Http\Controllers\ReporteActividadesController;
+use App\Http\Controllers\ReporteGeneralController;
 
 
-
+// recuperar contraseña
 Auth::routes(['verify' => true]);
+Route::get('password/reset', [PasswordResetLinkController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [PasswordResetLinkController::class, 'sendResetLinkEmail'])->name('password.email');
+
+Route::get('password/reset/{token}', [NewPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [NewPasswordController::class, 'reset'])->name('password.update');
 
 
 Route::get('/', function () {
@@ -94,7 +104,14 @@ Route::delete('/admin/gestion-actividades/delete/{id}', [GestionActividadesContr
 Route::get('/reservaciones', [CotizacionController::class, 'index'])->name('reservaciones');
 Route::post('/reservaciones/procesar', [CotizacionController::class, 'procesarCotizacion'])->name('reservaciones.procesar');
 Route::post('/reservaciones/calcular-total', [CotizacionController::class, 'calcularTotal'])->name('reservaciones.calcularTotal');
+// Ruta para ver todas las cotizaciones
+Route::get('/admin/cotizaciones', [CotizacionController::class, 'verCotizaciones'])->name('admin.cotizaciones');
 
+// Ruta para actualizar el estado de una cotización a "contactado"
+Route::put('/admin/cotizaciones/{id}', [CotizacionController::class, 'actualizarEstado'])->name('admin.cotizaciones.update');
+
+// Ruta para eliminar una cotización
+Route::delete('/admin/cotizaciones/{id}', [CotizacionController::class, 'eliminarCotizacion'])->name('admin.cotizaciones.destroy');
 
 //pedidos
 Route::post('/pedido/store', [PedidoController::class, 'store'])->name('pedido.store');
@@ -113,6 +130,23 @@ Route::post('/pagos', [PagoController::class, 'store'])->name('pagos.store');
 
 
 
-
+//REPORTES
 Route::get('/admin/reportes', [ReporteController::class, 'index'])->name('admin.reportes');
 Route::get('/admin/reportes/pdf', [ReporteController::class, 'generarPDF'])->name('admin.reportes.pdf');
+// Ruta para el reporte de actividades
+Route::get('admin/reporte-actividades', [ReporteActividadesController::class, 'index'])->name('admin.reporte-actividades');
+// Ruta para generar el PDF del reporte de actividades
+Route::get('admin/reporte-actividades/pdf', [ReporteActividadesController::class, 'generarPDF'])->name('admin.reporte-actividades.pdf');
+// Ruta para mostrar el reporte general
+Route::get('admin/reporte-general', [ReporteGeneralController::class, 'index'])->name('admin.reporte-general');
+// Ruta para generar el PDF del reporte general
+Route::get('admin/reporte-general/pdf', [ReporteGeneralController::class, 'generarPDF'])->name('admin.reporte-general.pdf');
+
+// Ruta para mostrar la vista de gestión de pagos
+Route::get('/admin/gestion-pagos', [GestionPagosAdminController::class, 'gestionPagos'])->name('admin.gestion-pagos');
+
+// Ruta para revertir un pago usando el ID
+Route::delete('/admin/revertir-pago/{id}', [GestionPagosAdminController::class, 'revertirPago'])->name('admin.revertir-pago');
+
+// Ruta para actualizar un pago
+Route::post('/admin/actualizar-pago/{id}', [GestionPagosAdminController::class, 'actualizarPago'])->name('admin.actualizar-pago');

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Mesa; // Asegúrate de usar el modelo correcto
-
+use App\Models\Mesa; 
 class MesaController extends Controller
 {
     public function index()

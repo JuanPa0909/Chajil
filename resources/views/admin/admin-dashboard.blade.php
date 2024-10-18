@@ -7,9 +7,10 @@
         Bienvenido, {{ Auth::user()->nombres }} {{ Auth::user()->apellidos }}
     </p>
 
-    <div class="row g-4">
+    <!-- Primera fila de tarjetas con espaciado mayor -->
+    <div class="row row-cols-1 row-cols-md-2 g-5 mb-5">
         <!-- Gestión de Restaurante -->
-        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
             <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
                     <i class="fas fa-utensils fa-3x mb-3"></i>
@@ -21,7 +22,7 @@
         </div>
 
         <!-- Gestión del Menú -->
-        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
             <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
                     <i class="fas fa-list-alt fa-3x mb-3"></i>
@@ -31,21 +32,24 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Gestión de Inventario -->
-        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+    <!-- Segunda fila de tarjetas con más espaciado -->
+    <div class="row row-cols-1 row-cols-md-2 g-5 mb-5">
+        <!-- Gestión de Cotizaciones -->
+        <div class="col d-flex justify-content-center">
             <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-boxes fa-3x mb-3"></i>
-                    <h5 class="card-title font-weight-bold">Inventario</h5>
-                    <p class="card-text">Administra el inventario del restaurante y parque.</p>
-                    <a href="#" class="btn btn-outline-primary mt-auto btn-custom">Ir a Inventario</a>
+                    <i class="fas fa-file-invoice-dollar fa-3x mb-3"></i>
+                    <h5 class="card-title font-weight-bold">Gestión de Cotizaciones</h5>
+                    <p class="card-text">Administra las cotizaciones de eventos y contacta a los clientes.</p>
+                    <a href="{{ route('admin.cotizaciones') }}" class="btn btn-outline-primary mt-auto btn-custom">Ir a Cotizaciones</a>
                 </div>
             </div>
         </div>
 
         <!-- Gestión de Actividades -->
-        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
             <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
                     <i class="fas fa-calendar-alt fa-3x mb-3"></i>
@@ -55,9 +59,12 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <!-- Tercera fila de tarjetas con más espacio -->
+    <div class="row row-cols-1 row-cols-md-2 g-5 mb-5">
         <!-- Cobro de Actividades -->
-        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
             <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
                     <i class="fas fa-money-bill-wave fa-3x mb-3"></i>
@@ -68,26 +75,44 @@
             </div>
         </div>
 
-        <!-- Reportes -->
-        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
-            <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-chart-line fa-3x mb-3"></i>
-                    <h5 class="card-title font-weight-bold">Reportes</h5>
-                    <p class="card-text">Genera y revisa reportes de operaciones.</p>
-                    <a href="{{ route('admin.reportes') }}" class="btn btn-outline-primary mt-auto btn-custom">Ir a Reportes</a>
-                </div>
-            </div>
+<!-- Reportes -->
+<div class="col d-flex justify-content-center">
+    <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+            <i class="fas fa-chart-line fa-3x mb-3"></i>
+            <h5 class="card-title font-weight-bold">Reportes</h5>
+            <p class="card-text">Genera y revisa reportes de operaciones.</p>
+            <a href="{{ route('admin.reporte-general') }}" class="btn btn-outline-primary mt-auto btn-custom mb-2">Reporte General</a>
+            <a href="{{ route('admin.reporte-actividades') }}" class="btn btn-outline-primary mt-auto btn-custom mb-2">Reporte Actividades</a>
+            <a href="{{ route('admin.reportes') }}" class="btn btn-outline-primary mt-auto btn-custom">Reporte Restaurante</a>
         </div>
+    </div>
+</div>
 
+    </div>
+
+    <!-- Cuarta fila de tarjetas con más espaciado -->
+    <div class="row row-cols-1 row-cols-md-2 g-5 mb-5">
         <!-- Gestión de Usuarios -->
-        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
             <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
                     <i class="fas fa-users fa-3x mb-3"></i>
                     <h5 class="card-title font-weight-bold">Gestión de Usuarios</h5>
                     <p class="card-text">Administra los usuarios del sistema.</p>
                     <a href="{{ route('admin.gestion-usuarios') }}" class="btn btn-outline-primary mt-auto btn-custom">Ir a Gestión de Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gestión de Pagos -->
+        <div class="col d-flex justify-content-center">
+            <div class="card h-100 text-center border-0 shadow tarjeta-responsive">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="fas fa-wallet fa-3x mb-3"></i>
+                    <h5 class="card-title font-weight-bold">Gestión de Pagos</h5>
+                    <p class="card-text">Administra y revierte pagos realizados.</p>
+                    <a href="{{ route('admin.gestion-pagos') }}" class="btn btn-outline-primary mt-auto btn-custom">Ir a Gestión de Pagos</a>
                 </div>
             </div>
         </div>

@@ -15,7 +15,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validar la entrada del formulario
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -25,7 +24,6 @@ class LoginController extends Controller
 
         // Intentar autenticar al usuario
         if (Auth::attempt($credentials)) {
-           
             $user = Auth::user();
 
             // Redirigir según el tipo de usuario
