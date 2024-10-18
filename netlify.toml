@@ -1,0 +1,12 @@
+[build]
+publish = "public"
+command = "composer install && npm run prod"
+
+[build.environment]
+PHP_VERSION = "8.2"
+
+[build.caching]
+cache = [
+  "node_modules",
+  ".composer"
+]
