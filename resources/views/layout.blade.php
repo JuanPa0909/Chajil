@@ -8,7 +8,6 @@
     <!-- Favicon del logo del parque -->
     <link rel="icon" href="{{ asset('imagenes/logo.png') }}" type="image/png">
 
-   <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --> 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -96,7 +95,6 @@
 
     @include('partials.footer')
 
-    <script src="{{ mix('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
