@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <img src="{{ asset('imagenes/panoramica.jpg') }}" class="img-fluid rounded shadow-lg" alt="Donaciones">
+                <img src="{{ asset('imagenes/panoramica.JPG') }}" class="img-fluid rounded shadow-lg" alt="Donaciones">
             </div>
             <div class="col-md-6">
                 <h2 class="font-weight-bold mb-4" style="color: #225b60; font-size: 2.5rem;">Entrada al Parque</h2>
