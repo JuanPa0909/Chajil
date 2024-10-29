@@ -8,8 +8,8 @@ class MesaController extends Controller
 {
     public function index()
     {
-        $mesas = Mesa::all(); // Recupera todas las mesas
+        $mesas = Mesa::all(); 
 
-        return view('restaurante.mesas.index', compact('mesas'));
+        return view('Restaurante.mesas.index', compact('mesas'));
     }
 }

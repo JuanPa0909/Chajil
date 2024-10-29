@@ -13,7 +13,7 @@ class PagoController extends Controller
         // Obtener todos los pedidos que aún no han sido pagados
         $pedidos = Pedido::whereDoesntHave('pagos')->get();
 
-        return view('restaurante.pagos.index', compact('pedidos'));
+        return view('Restaurante.pagos.index', compact('pedidos'));
     }
 
     public function store(Request $request)
