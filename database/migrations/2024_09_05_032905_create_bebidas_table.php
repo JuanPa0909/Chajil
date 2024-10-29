@@ -4,24 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateBebidasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('bebidas', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id_bebida');
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->decimal('precio', 8, 2);
+            $table->enum('tipo_bebida', ['caliente', 'fria']);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('bebidas');
     }
-};
+}

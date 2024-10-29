@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,7 +18,7 @@ class CreatePedidosTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios');
-            $table->foreign('id_mesa')->references('id_mesa')->on('mesas');
+            $table->foreign('id_mesa')->references('id_mesa')->on('mesas')->onDelete('set null');
         });
     }
 

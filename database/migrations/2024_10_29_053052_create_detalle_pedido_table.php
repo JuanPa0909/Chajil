@@ -18,9 +18,9 @@ class CreateDetallePedidoTable extends Migration
             $table->decimal('subtotal', 10, 2);
             $table->timestamps();
 
-            $table->foreign('id_pedido')->references('id_pedido')->on('pedidos');
-            $table->foreign('id_menu')->references('id_menu')->on('menus');
-            $table->foreign('id_bebida')->references('id_bebida')->on('bebidas');
+            $table->foreign('id_pedido')->references('id_pedido')->on('pedidos')->onDelete('cascade');
+            $table->foreign('id_menu')->references('id_menu')->on('menus')->onDelete('set null');
+            $table->foreign('id_bebida')->references('id_bebida')->on('bebidas')->onDelete('set null');
         });
     }
 

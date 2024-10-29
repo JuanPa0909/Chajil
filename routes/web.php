@@ -143,7 +143,7 @@ Route::get('admin/reporte-general', [ReporteGeneralController::class, 'index'])-
 Route::get('admin/reporte-general/pdf', [ReporteGeneralController::class, 'generarPDF'])->name('admin.reporte-general.pdf');
 
 // Ruta para mostrar la vista de gestión de pagos
-Route::get('/admin/gestion-pagos', [GestionPagosAdminController::class, 'gestionPagos'])->name('admin.gestion-pagos');
+Route::get('/admin/gestion-pagos', [GestionPagosAdminController::class, 'gestionpagos'])->name('admin.gestion-pagos');
 
 // Ruta para revertir un pago usando el ID
 Route::delete('/admin/revertir-pago/{id}', [GestionPagosAdminController::class, 'revertirPago'])->name('admin.revertir-pago');
