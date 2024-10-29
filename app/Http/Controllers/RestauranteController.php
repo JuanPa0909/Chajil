@@ -8,6 +8,6 @@ class RestauranteController extends Controller
 {
     public function index()
     {
-        return view('restaurante.index');
+        return view('Restaurante.index');
     }
 }
