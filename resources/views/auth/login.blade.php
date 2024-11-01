@@ -1,15 +1,15 @@
 @extends('layout')
 
 @section('content')
-<div class="container d-flex justify-content-between align-items-center" style="min-height: 80vh;">
+<div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center" style="min-height: 80vh;">
     <!-- Sección Izquierda -->
-    <div class="left-section text-center" style="max-width: 45%;">
+    <div class="left-section text-center mb-4 mb-lg-0" style="max-width: 100%; flex: 1;">
         <h1 class="display-4 font-weight-bold" style="color: #004d40;">CHAJIL SIWAN</h1>
         <p class="lead" style="color: #004d40;">Administración y Gestión del Parque Ecológico</p>
     </div>
 
     <!-- Sección de Login -->
-    <div class="card p-5 shadow-lg" style="background-color: rgba(13, 61, 46, 0.05); border-radius: 15px; max-width: 400px; width: 100%;">
+    <div class="card p-5 shadow-lg" style="background-color: rgba(13, 61, 46, 0.05); border-radius: 15px; max-width: 400px; width: 100%; flex: 1;">
         <div class="text-center mb-4">
             <h2 class="font-weight-bold" style="color: #004d40;">Iniciar Sesión</h2>
         </div>
@@ -56,6 +56,20 @@
     }
     .card {
         border: none;
+    }
+    /* Responsiveness for smaller screens */
+    @media (max-width: 992px) {
+        .container {
+            flex-direction: column;
+            text-align: center;
+        }
+        .left-section,
+        .card {
+            max-width: 100%;
+        }
+        .card {
+            margin-top: 20px;
+        }
     }
 </style>
 @endsection

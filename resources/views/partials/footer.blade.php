@@ -5,25 +5,24 @@
             <div class="col-md-3 mb-3">
                 <h5 class="font-weight-bold text-uppercase">Enlaces Rápidos</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-light">Inicio</a></li>
-                    <li><a href="#" class="text-light">Acerca de Nosotros</a></li>
-                    <li><a href="#" class="text-light">Eventos</a></li>
-                    <li><a href="#" class="text-light">Reservaciones</a></li>
-                    <li><a href="#" class="text-light">Contacto</a></li>
+                    <li><a href="{{ route('home') }}" class="text-light">Inicio</a></li>
+                    <li><a href="{{ route('acerca') }}" class="text-light">Acerca de Nosotros</a></li>
+                    <li><a href="{{ route('diversion') }}" class="text-light">Actividades</a></li>
+                    <li><a href="{{ route('reservaciones') }}" class="text-light">Reservaciones</a></li>
+
                 </ul>
             </div>
             <!-- Columna de Contacto -->
             <div class="col-md-3 mb-3">
                 <h5 class="font-weight-bold text-uppercase">Contáctanos</h5>
                 <p class="mb-1">Dirección: Totonicapán, Guatemala</p>
-                <p class="mb-1">Teléfono: +502 1234-5678</p>
-                <p class="mb-1">Correo: info@chajilsiwan.com</p>
+                <p class="mb-1">Teléfono: +502 5375-7051</p>
+                <p class="mb-1">Correo: parquechajilsiwan@gmail.com</p>
             </div>
             <!-- Columna de Redes Sociales -->
             <div class="col-md-3 mb-3">
                 <h5 class="font-weight-bold text-uppercase">Síguenos</h5>
-                <a href="#" class="text-light mr-3"><i class="fab fa-facebook fa-lg" style="color: #ffffff;"></i></a>
-                <a href="#" class="text-light mr-3"><i class="fab fa-instagram fa-lg" style="color: #ffffff;"></i></a>
+                <a href="https://www.facebook.com/parquechajilsiwan/?locale=es_LA" class="text-light mr-3"><i class="fab fa-facebook fa-lg" style="color: #ffffff;"></i></a>
             </div>
             <!-- Columna de Logo UMG -->
             <div class="col-md-3 mb-3">
