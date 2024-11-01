@@ -14,6 +14,6 @@ class MenuController extends Controller
         $refacciones = Menu::where('tipo_menu', 'refaccion')->get();
         $bebidas = Bebida::all(); 
 
-        return view('Restaurante.menu.index', compact('desayunos', 'almuerzos', 'refacciones', 'bebidas'));
+        return view('Restaurante.Menu.index', compact('desayunos', 'almuerzos', 'refacciones', 'bebidas'));
     }
 }
