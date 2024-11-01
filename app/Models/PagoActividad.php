@@ -9,7 +9,7 @@ class PagoActividad extends Model
 {
     use HasFactory;
 
-    protected $table = 'PagoActividad';
+    protected $table = 'pagoactividad';
 
     protected $fillable = [
         'id_actividad', 'id_usuario', 'cantidadTickets', 'monto', 'fecha_hora', 'estadoPago', 'descuento'

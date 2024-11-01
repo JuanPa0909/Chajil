@@ -7,10 +7,9 @@ use App\Models\Cotizacion;
 
 class CotizacionController extends Controller
 {
-    // Mostrar el formulario de cotización para los clientes
     public function index()
     {
-        return view('reservaciones');  // Mostrar la vista de reserva
+        return view('reservaciones');  
     }
 
     // Procesar la solicitud de cotización enviada por el cliente
