@@ -123,7 +123,7 @@ class ReporteController extends Controller
         $cenasVendidas = $menuesVendidos->where('tipo', 'cena')->sum('cantidad');
 
         // Generar el PDF
-        $pdf = PDF::loadView('admin.reportes_pdf', compact(
+        $pdf = PDF::loadView('admin.reportes.pdf', compact(
             'totalGananciasMesActual',
             'totalGananciasMesAnterior',
             'totalPedidos',
