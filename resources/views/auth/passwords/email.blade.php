@@ -10,7 +10,7 @@
 
         @if (session('status'))
             <div class="alert alert-success text-center" style="color: green;">
-                {{ session('status') }}
+                ¡Hemos enviado un enlace de recuperación de contraseña a tu correo!
             </div>
         @endif
 

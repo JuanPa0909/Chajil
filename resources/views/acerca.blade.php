@@ -76,7 +76,16 @@
             </div>
         </div>
     </div>
+
+
+    <div class="text-center mt-5 p-3" style="background-color: #e0f2f1; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+    <img src="{{ asset('imagenes/umg.png') }}" alt="Logo UMG" style="height: 40px; margin-right: 10px;">
+    <p class="text-dark font-weight-bold" style="font-size: 1rem; margin: 0;">
+        Sistema creado por: <span style="color: #004d40;">Marcos Juan Pablo Vásquez Mijangos</span>, estudiante de la Universidad Mariano Gálvez de Guatemala, sede Quetzaltenango, 2024.
+    </p>
+    <img src="{{ asset('imagenes/umg.png') }}" alt="Logo UMG" style="height: 40px; margin-left: 10px;">
 </div>
+
 
 <style>
     body {
