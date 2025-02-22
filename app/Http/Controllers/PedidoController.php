@@ -138,4 +138,56 @@ class PedidoController extends Controller
         // Retornar con éxito
         return back()->with('success', 'Pedido procesado correctamente.');
     }
+
+    public function modificarPedidos()
+{
+    $pedidos = Pedido::whereDoesntHave('pagos')->with(['usuario', 'modificador', 'detalles.menu', 'detalles.bebida'])->get();
+    $menus = Menu::all();
+    $bebidas = Bebida::all();
+
+    return view('Restaurante.pedidos.modificar', compact('pedidos', 'menus', 'bebidas'));
+}
+
+public function actualizarPedido(Request $request, $id)
+{
+    $pedido = Pedido::findOrFail($id);
+    $data = explode('-', $request->producto);
+    $tipo = $data[1];
+    $productoId = $data[0];
+    $cantidad = $request->cantidad;
+
+    if ($tipo === 'menu') {
+        $menu = Menu::find($productoId);
+        if ($menu) {
+            DetallePedido::create([
+                'id_pedido' => $pedido->id_pedido,
+                'id_menu' => $menu->id_menu,
+                'cantidad' => $cantidad,
+                'precio_unitario' => $menu->precio,
+                'subtotal' => $menu->precio * $cantidad
+            ]);
+            $pedido->total += $menu->precio * $cantidad;
+        }
+    } elseif ($tipo === 'bebida') {
+        $bebida = Bebida::find($productoId);
+        if ($bebida) {
+            DetallePedido::create([
+                'id_pedido' => $pedido->id_pedido,
+                'id_bebida' => $bebida->id_bebida,
+                'cantidad' => $cantidad,
+                'precio_unitario' => $bebida->precio,
+                'subtotal' => $bebida->precio * $cantidad
+            ]);
+            $pedido->total += $bebida->precio * $cantidad;
+        }
+    }
+
+    // Registrar quién realizó la modificación
+    $pedido->modificado_por = auth()->user()->id_usuario;
+    $pedido->save();
+
+    return redirect()->route('pedidos.modificar')->with('success', 'Pedido actualizado correctamente.');
+}
+
+
 }

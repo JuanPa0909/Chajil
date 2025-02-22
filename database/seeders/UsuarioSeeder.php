@@ -26,7 +26,7 @@ class UsuarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'tipo_usuario' => 'user',
+                'tipo_usuario' => 'usuario',
                 'nombres' => 'Usuario',
                 'apellidos' => 'Ejemplo',
                 'email' => 'usuario@ejemplo.com',
@@ -38,6 +38,19 @@ class UsuarioSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'tipo_usuario' => 'cobrador',
+                'nombres' => 'Cobrador',
+                'apellidos' => 'Ejemplo',
+                'email' => 'cobrador@ejemplo.com',
+                'telefono' => '99113325',
+                'estado' => 'activo',
+                'password' => Hash::make('Contraseña123'),
+                'fechaCreacion' => Carbon::now(),
+                'ultimoAcceso' => Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
         ]);
     }
 }

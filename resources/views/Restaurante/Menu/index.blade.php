@@ -243,5 +243,54 @@
     document.getElementById('confirmarPedidoBtn').addEventListener('click', function() {
         document.getElementById('pedido-form').submit();
     });
+
+    function imprimirComanda() {
+    let mesa = document.getElementById('mesa').value;
+    let fecha = new Date().toLocaleString('es-GT');
+    let productosLista = document.getElementById('lista-productos').cloneNode(true);
+
+    // Quitar botones "Eliminar"
+    productosLista.querySelectorAll('button').forEach(btn => btn.remove());
+
+    let printWindow = window.open('', '', 'height=600,width=400');
+    printWindow.document.write('<html><head><title>Comanda</title>');
+    printWindow.document.write(`
+        <style>
+            body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+            .comanda { border: 2px solid #004d40; padding: 15px; border-radius: 10px; }
+            .comanda-header { text-align: center; margin-bottom: 15px; }
+            .comanda-footer { text-align: center; margin-top: 15px; }
+        </style>
+    `);
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(`
+        <div class="comanda">
+            <div class="comanda-header">
+                <h3>Comanda de Pedido</h3>
+                <p><strong>Mesa:</strong> ${mesa}</p>
+                <p><strong>Fecha:</strong> ${fecha}</p>
+            </div>
+            <div class="comanda-content">
+                ${productosLista.outerHTML}
+            </div>
+            <div class="comanda-footer">
+                <p>¡Gracias!</p>
+            </div>
+        </div>
+    `);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+    }, 500);
+}
+
+// Confirmar pedido y luego imprimir
+document.getElementById('confirmarPedidoBtn').addEventListener('click', function() {
+    imprimirComanda();
+    document.getElementById('pedido-form').submit();
+});
 </script>
 @endsection

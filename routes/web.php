@@ -150,3 +150,8 @@ Route::delete('/admin/revertir-pago/{id}', [GestionPagosAdminController::class, 
 
 // Ruta para actualizar un pago
 Route::post('/admin/actualizar-pago/{id}', [GestionPagosAdminController::class, 'actualizarPago'])->name('admin.actualizar-pago');
+
+
+// Ruta para modificar pedidos activos
+Route::get('/pedidos/modificar', [PedidoController::class, 'modificarPedidos'])->name('pedidos.modificar');
+Route::post('/pedidos/modificar/{id}', [PedidoController::class, 'actualizarPedido'])->name('pedidos.actualizar');

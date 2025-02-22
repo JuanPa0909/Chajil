@@ -96,6 +96,7 @@
                             <tr>
                                 <th>Nombre del Producto</th>
                                 <th>Cantidad Vendida</th>
+                                <th>Total Ingresos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -103,6 +104,7 @@
                             <tr>
                                 <td>{{ $producto['nombre'] }}</td>
                                 <td>{{ $producto['cantidad'] }}</td>
+                                <td>Q{{ number_format($producto['cantidad'] * 10, 2) }}</td> <!-- Ajustar cálculo de ingresos según el precio real del producto -->
                             </tr>
                             @endforeach
                         </tbody>

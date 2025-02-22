@@ -12,21 +12,18 @@ class ReporteGeneralController extends Controller
 {
     public function index(Request $request)
     {
-        // Fechas de inicio y fin (se pueden usar filtros si es necesario)
         $fechaInicio = $request->input('fecha_inicio') ? Carbon::parse($request->input('fecha_inicio'))->startOfDay() : Carbon::now()->startOfMonth();
         $fechaFin = $request->input('fecha_fin') ? Carbon::parse($request->input('fecha_fin'))->endOfDay() : Carbon::now()->endOfMonth();
 
         // Datos de Actividades
         $actividadesPagadas = PagoActividad::whereBetween('fecha_hora', [$fechaInicio, $fechaFin])
-            ->with('actividad') // Cargar relación de actividad
+            ->with('actividad')
             ->get();
 
         $totalActividades = $actividadesPagadas->count();
         $totalIngresosActividades = $actividadesPagadas->sum('monto');
 
-        // Agrupar por actividad para el desglose
         $actividadesTotales = $actividadesPagadas->groupBy('id_actividad')->map(function ($actividad) {
-            // Validar si existe la relación 'actividad'
             $nombreActividad = $actividad->first()->actividad->nombre ?? 'Actividad no encontrada';
             return [
                 'nombre' => $nombreActividad,
@@ -37,23 +34,32 @@ class ReporteGeneralController extends Controller
 
         // Datos del Restaurante (Pedidos)
         $pedidos = Pedido::whereBetween('created_at', [$fechaInicio, $fechaFin])
-            ->with('detalles.menu') // Cargar relación 'menu' desde 'detalles'
+            ->with(['detalles.menu', 'detalles.bebida']) // Cargar ambas relaciones
             ->get();
 
         $totalPedidos = $pedidos->count();
         $totalIngresosRestaurante = $pedidos->sum('total');
 
-        // Agrupar por productos del menú
         $productosVendidos = $pedidos->flatMap(function ($pedido) {
             return $pedido->detalles;
         })->groupBy('id_menu')->map(function ($items) {
-            // Validar si existe la relación 'menu'
-            $nombreProducto = $items->first()->menu->nombre ?? 'Producto no encontrado';
+            $detalle = $items->first();
+            
+            if ($detalle->menu) {
+                $nombreProducto = $detalle->menu->nombre;
+            } elseif ($detalle->bebida) {
+                $nombreProducto = $detalle->bebida->nombre;
+            } else {
+                $nombreProducto = 'Producto no encontrado';
+            }
+        
             return [
                 'nombre' => $nombreProducto,
                 'cantidad' => $items->sum('cantidad'),
+                'total' => $items->sum(fn($item) => $item->precio_unitario * $item->cantidad)
             ];
         });
+        
 
         return view('admin.reporte_general', compact(
             'totalActividades',
@@ -69,7 +75,6 @@ class ReporteGeneralController extends Controller
 
     public function generarPDF(Request $request)
     {
-        // Reutilizar los mismos datos que en el index
         $fechaInicio = $request->input('fecha_inicio') ? Carbon::parse($request->input('fecha_inicio'))->startOfDay() : Carbon::now()->startOfMonth();
         $fechaFin = $request->input('fecha_fin') ? Carbon::parse($request->input('fecha_fin'))->endOfDay() : Carbon::now()->endOfMonth();
 
@@ -85,20 +90,32 @@ class ReporteGeneralController extends Controller
             ];
         });
 
-        $pedidos = Pedido::whereBetween('created_at', [$fechaInicio, $fechaFin])->with('detalles.menu')->get();
+        $pedidos = Pedido::whereBetween('created_at', [$fechaInicio, $fechaFin])
+            ->with(['detalles.menu', 'detalles.bebida'])
+            ->get();
+        
         $totalPedidos = $pedidos->count();
         $totalIngresosRestaurante = $pedidos->sum('total');
+        
         $productosVendidos = $pedidos->flatMap(function ($pedido) {
             return $pedido->detalles;
         })->groupBy('id_menu')->map(function ($items) {
-            $nombreProducto = $items->first()->menu->nombre ?? 'Producto no encontrado';
+            $detalle = $items->first();
+            
+            if ($detalle->menu) {
+                $nombreProducto = $detalle->menu->nombre;
+            } elseif ($detalle->bebida) {
+                $nombreProducto = $detalle->bebida->nombre;
+            } else {
+                $nombreProducto = 'Producto no encontrado';
+            }
+            
             return [
                 'nombre' => $nombreProducto,
                 'cantidad' => $items->sum('cantidad'),
             ];
         });
 
-        // Generar el PDF
         $pdf = PDF::loadView('admin.reporte_general_pdf', compact(
             'totalActividades',
             'totalIngresosActividades',

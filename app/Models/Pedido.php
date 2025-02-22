@@ -8,7 +8,7 @@ class Pedido extends Model
 {
     protected $table = 'pedidos';
     protected $primaryKey = 'id_pedido'; 
-    protected $fillable = ['id_usuario', 'id_mesa', 'total', 'estado_pedido'];
+    protected $fillable = ['id_usuario', 'id_mesa', 'total', 'estado_pedido', 'modificado_por'];
 
     public function detalles()
     {
@@ -27,7 +27,11 @@ class Pedido extends Model
 
     public function pagos()
     {
-    return $this->hasMany(Pago::class, 'id_pedido');
+        return $this->hasMany(Pago::class, 'id_pedido');
     }
 
+    public function modificador()
+    {
+        return $this->belongsTo(Usuario::class, 'modificado_por');
+    }
 }

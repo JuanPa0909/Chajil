@@ -38,6 +38,17 @@
                 </div>
             </div>
         </div>
+        <!-- Modificar Pedidos -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card border-0 shadow-lg h-100" style="background-color: #ffffff; border-radius: 15px;">
+                <div class="card-body text-center">
+                    <i class="fas fa-edit fa-3x mb-4" style="color: #004d40;"></i>
+                    <h5 class="card-title font-weight-bold">Modificar Pedidos</h5>
+                    <p class="card-text">Edita o cancela pedidos en curso.</p>
+                    <a href="{{ route('pedidos.modificar') }}" class="btn btn-outline-dark mt-3" style="border-radius: 25px;">Ir a Modificar Pedidos</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

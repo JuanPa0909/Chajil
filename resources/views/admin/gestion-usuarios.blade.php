@@ -23,6 +23,7 @@
                             <select name="tipo_usuario" class="form-control" required>
                                 <option value="admin" {{ (isset($usuarioEdit) && $usuarioEdit->tipo_usuario == 'admin') ? 'selected' : '' }}>Admin</option>
                                 <option value="user" {{ (isset($usuarioEdit) && $usuarioEdit->tipo_usuario == 'user') ? 'selected' : '' }}>User</option>
+                                <option value="cobrador" {{ (isset($usuarioEdit) && $usuarioEdit->tipo_usuario == 'cobrador') ? 'selected' : '' }}>Cobrador</option>
                             </select>
                         </div>
 
